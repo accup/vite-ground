@@ -1,12 +1,16 @@
+import path from "node:path";
 import { defineConfig } from "vite";
-import routes from "./vite-routes";
+import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  root: "src/",
   base: "/vite-ground/",
+  plugins: [vue()],
   build: {
     rollupOptions: {
-      input: routes,
+      input: {
+        vanilla: path.resolve(__dirname, "vanilla/index.html"),
+        vue: path.resolve(__dirname, "vue/index.html"),
+      },
     },
   },
 });
