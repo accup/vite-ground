@@ -1,10 +1,11 @@
 import path from "node:path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import vueRouterHistoryMode from "./plugins/vue-router-history-mode";
 
 export default defineConfig({
   base: "/vite-ground/",
-  plugins: [vue()],
+  plugins: [vue(), vueRouterHistoryMode()],
   build: {
     rollupOptions: {
       input: {
