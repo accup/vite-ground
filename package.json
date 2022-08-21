@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "./bin/deploy.sh"
   },
   "dependencies": {
     "@types/node": "^18.7.8",
