@@ -18,13 +18,15 @@
       if (!params.has("p")) {
         const path = fullPath.slice(base.length + 1);
         params.set("p", encodeURIComponent(path));
+        loc.pathname = `/${base}/`;
         loc.search = params.toString();
-        window.location.replace(loc.href);
+        window.location.replace(loc);
 
         const p = document.createElement("p");
         p.textContent = `Redirect to "${url}"`;
         document.body.appendChild(p);
       } else {
+        console.log(loc);
         params.delete("p");
         loc.search = params.toString();
         window.history.replaceState(null, "", loc);
