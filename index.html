@@ -27,8 +27,11 @@
           p.textContent = `Redirect to "${url}"`;
           document.body.appendChild(p);
         } else {
-          console.log(loc);
+          const loc = new URL(window.location);
+          const params = loc.searchParams;
+          const path = decodeURIComponent(params.get("p"));
           params.delete("p");
+          loc.pathname += path;
           loc.search = params.toString();
           window.history.replaceState(null, "", loc);
         }
