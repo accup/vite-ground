@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Vite ground</title>
+    <script>
+      const BASE_PARTS = 2;
+
+      const loc = new URL(window.location);
+      /** @type {URLSearchParams} */
+      const params = loc.searchParams;
+      const origin = loc.origin;
+      const fullPath = loc.href.slice(origin.length + 1);
+      const parts = fullPath.split("/");
+      const base = parts.slice(0, BASE_PARTS).join("/");
+
+      if (!params.has("p")) {
+        const path = fullPath.slice(base.length + 1);
+        params.set("p", encodeURIComponent(path));
+        loc.search = params.toString();
+        window.location.replace(loc.href);
+
+        const p = document.createElement("p");
+        p.textContent = `Redirect to "${url}"`;
+        document.body.appendChild(p);
+      } else {
+        params.delete("p");
+        loc.search = params.toString();
+        window.history.replaceState(null, "", loc);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
