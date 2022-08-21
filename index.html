@@ -5,33 +5,37 @@
     <meta name="robots" content="noindex" />
     <title>Vite ground</title>
     <script>
-      const BASE_PARTS = 2;
+      {
+        const BASE_PARTS = 2;
 
-      const loc = new URL(window.location);
-      /** @type {URLSearchParams} */
-      const params = loc.searchParams;
-      const origin = loc.origin;
-      const fullPath = loc.href.slice(origin.length + 1);
-      const parts = fullPath.split("/");
-      const base = parts.slice(0, BASE_PARTS).join("/");
+        const loc = new URL(window.location);
+        /** @type {URLSearchParams} */
+        const params = loc.searchParams;
+        const origin = loc.origin;
+        const fullPath = loc.href.slice(origin.length + 1);
+        const parts = fullPath.split("/");
+        const base = parts.slice(0, BASE_PARTS).join("/");
 
-      if (!params.has("p")) {
-        const path = fullPath.slice(base.length + 1);
-        params.set("p", encodeURIComponent(path));
-        loc.pathname = `/${base}/`;
-        loc.search = params.toString();
-        window.location.replace(loc);
+        if (!params.has("p")) {
+          const path = fullPath.slice(base.length + 1);
+          params.set("p", encodeURIComponent(path));
+          loc.pathname = `/${base}/`;
+          loc.search = params.toString();
+          window.location.replace(loc);
 
-        const p = document.createElement("p");
-        p.textContent = `Redirect to "${url}"`;
-        document.body.appendChild(p);
-      } else {
-        console.log(loc);
-        params.delete("p");
-        loc.search = params.toString();
-        window.history.replaceState(null, "", loc);
+          const p = document.createElement("p");
+          p.textContent = `Redirect to "${url}"`;
+          document.body.appendChild(p);
+        } else {
+          console.log(loc);
+          params.delete("p");
+          loc.search = params.toString();
+          window.history.replaceState(null, "", loc);
+        }
       }
     </script>
   </head>
-  <body></body>
+  <body>
+    <p>You got a 404!</p>
+  </body>
 </html>
