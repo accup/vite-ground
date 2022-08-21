@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue</title>
+    <script>
+      {
+        const loc = new URL(window.location);
+        const params = loc.searchParams;
+        if (params.has("p")) {
+          const path = decodeURIComponent(params.get("p"));
+          params.delete("p");
+          loc.pathname += path;
+          loc.search = params.toString();
+          window.history.replaceState(null, "", loc);
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
