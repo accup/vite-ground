@@ -19,6 +19,7 @@ cd dist
 # カスタムドメインにデプロイする場合
 # echo 'www.example.com' > CNAME
 
+rm -rf .git
 git init
 git checkout -b main
 git add -A
