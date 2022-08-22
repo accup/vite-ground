@@ -19,8 +19,8 @@ const shapeProps: ShapeProps = {
     clickText: "Click!",
     startShapeStroke: "rgba(0, 0, 0, 1)",
     endShapeStroke: "rgba(0, 0, 0, 0)",
-    startShapeFill: "rgba(0, 0, 0, 0)",
-    endShapeFill: "rgba(0, 0, 0, 0.5)",
+    startShapeFill: "rgba(108, 108, 108, 0)",
+    endShapeFill: "rgba(108, 108, 108, 1)",
     startTextFill: "rgba(0, 0, 0, 1)",
     endTextFill: "rgba(255, 255, 255, 1)",
     segments: [

@@ -1,29 +1,10 @@
 <script setup lang="ts">
-const round = {
-  "stroke-linejoin": "round",
-  "stroke-linecap": "round",
-} as const;
+import type { ShapeProps } from "./Shape.vue";
+import Shape from "./Shape.vue";
 
-const freezeEase = {
-  fill: "freeze",
-  calcMode: "spline",
-  keySplines: "0.5 0 0.5 1",
-} as const;
-
-const contents: {
-  [name: string]: {
-    d: string;
-    segments: {
-      text: string;
-      d: string;
-      startOffset: number;
-      endOffset: number;
-      fontSize: number;
-      auxiliary: { stroke: string };
-    }[];
-  };
-} = {
-  heart: {
+const shapeProps: ShapeProps = {
+  id: "heart",
+  content: {
     d: `
       M50 40
       C50 10 10 10 10 40
@@ -32,13 +13,20 @@ const contents: {
       C90 10 50 10 50 40
       Z
     `,
+    startShapeStroke: "rgba(240, 0, 0, 1)",
+    endShapeStroke: "rgba(240, 0, 0, 0)",
+    startShapeFill: "rgba(248, 108, 108, 0)",
+    endShapeFill: "rgba(248, 108, 108, 1)",
+    startTextFill: "rgba(240, 0, 0, 1)",
+    endTextFill: "rgba(255, 255, 255, 1)",
     segments: [
       {
         text: "ハート（英: heart）、ハートマークは、",
+        textLength: 50,
         d: `
-          M20 46
-          L80 46
-          C110 46 50 100 50 40
+          M25 43
+          L75 43
+          C110 43 50 100 50 40
           C50 10 10 10 10 40
         `,
         startOffset: 133,
@@ -50,16 +38,15 @@ const contents: {
       },
       {
         text: "心臓を表すシンボル。一般的に色は赤で示される。",
+        textLength: 64,
         d: `
           M18 48
           L82 48
-          C112 48 50 20 20 40
-          C-10 66 30 95 45 70
-          L40 90
-          L60 90
-          L55 70
+          Q90 48 90 40
+          C90 0 10 0 10 40
+          Q10 60 50 90
         `,
-        startOffset: 151,
+        startOffset: 190,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -68,10 +55,11 @@ const contents: {
       },
       {
         text: "なお、日本の建築などでみられる同様の形の",
+        textLength: 56,
         d: `
-          M15 53
-          L85 53
-          C115 53 50 50 45 70
+          M22 53
+          L78 53
+          C118 53 50 50 45 70
           L40 90
           L60 90
           L55 70
@@ -86,9 +74,10 @@ const contents: {
       },
       {
         text: "文様や透かし彫りは猪目と呼ばれる。",
+        textLength: 50,
         d: `
-          M13.5 58
-          L86.5 58
+          M25 58
+          L75 58
           C95 58 90 50 85 45
           C75 30 40 45 55 70
           C70 95 110 66 80 40
@@ -102,11 +91,29 @@ const contents: {
         },
       },
       {
-        text: "出典: フリー百科事典『ウィキペディア（Wikipedia）』",
+        text: "出典: フリー百科事典",
+        textLength: 20,
         d: `
-          M32 65
-          L85 65
-          C100 65 95 53 80 40
+          M40 66
+          L60 66
+          C90 66 95 53 80 40
+          Q65 27 50 10
+          Q35 27 20 40
+        `,
+        startOffset: 90,
+        endOffset: 0,
+        fontSize: 2,
+        auxiliary: {
+          stroke: "violet",
+        },
+      },
+      {
+        text: "『ウィキペディア（Wikipedia）』",
+        textLength: 34,
+        d: `
+          M33 70
+          L67 70
+          C97 70 95 53 80 40
           Q65 27 50 10
           Q35 27 20 40
         `,
@@ -123,117 +130,5 @@ const contents: {
 </script>
 
 <template>
-  <svg
-    id="book__heart"
-    viewBox="0 0 100 100"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <template v-for="(content, id) in contents">
-        <path :id="`book__defs_${id}`" :d="content.d" />
-        <path
-          v-for="(segment, index) in content.segments"
-          :id="`book__defs_${id}_${index}`"
-          :d="segment.d"
-        />
-      </template>
-    </defs>
-    <g class="content">
-      <use
-        href="#book__defs_heart"
-        stroke-width="3"
-        stroke="rgba(0, 0, 0, 1)"
-        fill="rgba(0, 0, 0, 0)"
-        :="round"
-      >
-        <animate
-          begin="book__heart_ui.click"
-          attributeName="stroke"
-          values="rgba(0, 0, 0, 1);rgba(0, 0, 0, 0)"
-          dur="0.5s"
-          :="freezeEase"
-        />
-        <animate
-          begin="book__heart_ui.click + 2s"
-          attributeName="fill"
-          values="rgba(0, 0, 0, 0);rgba(0, 0, 0, 0.5)"
-          dur="1s"
-          :="freezeEase"
-        />
-      </use>
-      <g>
-        <set
-          begin="book__heart_ui.click"
-          end="reset.click"
-          attributeName="display"
-          to="none"
-        />
-        <text
-          x="50"
-          y="50"
-          dx="1"
-          dy="7"
-          text-anchor="middle"
-          fill="white"
-          font-size="15"
-        >
-          Click!
-        </text>
-        <use
-          id="book__heart_ui"
-          class="pointer"
-          href="#book__defs_heart"
-          stroke-width="3"
-          stroke="transparent"
-          fill="transparent"
-          :="round"
-        ></use>
-      </g>
-      <template v-for="(segment, index) in contents.heart.segments">
-        <text dy="1">
-          <animate
-            begin="book__heart_ui.click + 2s"
-            attributeName="fill"
-            values="rgba(0, 0, 0, 1);rgba(255, 255, 255, 1)"
-            dur="1s"
-            :="freezeEase"
-          />
-          <textPath
-            :href="`#book__defs_heart_${index}`"
-            :startOffset="segment.startOffset"
-            :font-size="segment.fontSize"
-          >
-            <animate
-              begin="book__heart_ui.click + 1s"
-              attributeName="startOffset"
-              :values="`${segment.startOffset};${segment.endOffset}`"
-              dur="2s"
-              :="freezeEase"
-            />
-            {{ segment.text }}
-          </textPath>
-        </text>
-      </template>
-    </g>
-    <g class="auxiliary">
-      <use
-        href="#book__defs_heart"
-        stroke="blue"
-        stroke-width="2"
-        fill="none"
-        opacity="0.4"
-        :="round"
-      />
-      <template v-for="(segment, index) in contents.heart.segments">
-        <use
-          :href="`#book__defs_heart_${index}`"
-          :stroke="segment.auxiliary?.stroke"
-          stroke-width="1"
-          fill="none"
-          opacity="0.4"
-          :="round"
-        />
-      </template>
-    </g>
-  </svg>
+  <Shape :="shapeProps" />
 </template>
