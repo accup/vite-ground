@@ -112,7 +112,7 @@ const freezeEase = {
           to="inline"
         />
         <template v-for="(segment, index) in content.segments">
-          <text dy="1">
+          <text dy="1" :fill="content.startTextFill">
             <animate
               :begin="`book__${id}_ui.click + 2s`"
               attributeName="fill"
