@@ -179,7 +179,6 @@ const contents: {
           dy="7"
           text-anchor="middle"
           fill="white"
-          font-family="PlemolJP"
           font-size="15"
         >
           Click!
@@ -195,7 +194,7 @@ const contents: {
         ></use>
       </g>
       <template v-for="(segment, index) in contents.spade.segments">
-        <text dy="1" font-family="PlemolJP">
+        <text dy="1">
           <animate
             begin="book__spade_ui.click + 2s"
             attributeName="fill"

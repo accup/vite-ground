@@ -91,8 +91,11 @@ const freezeEase = {
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
 #book {
   background-color: lightgray;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .pointer {
