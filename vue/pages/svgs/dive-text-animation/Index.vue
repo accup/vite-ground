@@ -2,6 +2,9 @@
 import Spade from "../../../components/svgs/dive-text-animation/Spade.vue";
 import Heart from "../../../components/svgs/dive-text-animation/Heart.vue";
 
+const freeze = {
+  fill: "freeze",
+} as const;
 const freezeEase = {
   fill: "freeze",
   calcMode: "spline",
@@ -42,13 +45,18 @@ const freezeEase = {
         <Spade width="100" height="100" />
       </g>
     </g>
-    <g transform="translate(5 3.75)">
-      <animateTransform
-        begin="book__spade_ui.click"
-        attributeName="transform"
-        type="translate"
-        values="5 3.75;-16 19"
-        dur="0.7s"
+    <g transform="translate(-16 19)" opacity="0" display="none">
+      <set
+        begin="book__spade_ui.click + 2s"
+        attributeName="display"
+        to="inline"
+        :="freeze"
+      />
+      <animate
+        begin="book__spade_ui.click + 2s"
+        attributeName="opacity"
+        values="0;1"
+        dur="1s"
         :="freezeEase"
       />
       <animateTransform
@@ -59,7 +67,7 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
-      <g transform="scale(0.04)" transform-origin="50 50">
+      <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__spade_ui.click"
           attributeName="transform"
