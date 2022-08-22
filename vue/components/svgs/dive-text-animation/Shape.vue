@@ -57,7 +57,7 @@ const freezeEase = {
         :href="`#book__defs_${id}`"
         stroke-width="3"
         :stroke="content.startShapeStroke"
-        fill="rgba(0, 0, 0, 0)"
+        :fill="content.startShapeFill"
         :="round"
       >
         <animate
