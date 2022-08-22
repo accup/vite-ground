@@ -1,0 +1,163 @@
+<script setup lang="ts">
+import { defineProps } from "vue";
+
+export interface ShapeProps {
+  id: string;
+  content: {
+    d: string;
+    clickText?: string;
+    startShapeStroke: string;
+    endShapeStroke: string;
+    startShapeFill: string;
+    endShapeFill: string;
+    startTextFill: string;
+    endTextFill: string;
+    segments: {
+      text: string;
+      textLength: number;
+      d: string;
+      startOffset: number;
+      endOffset: number;
+      fontSize: number;
+      auxiliary: { stroke: string };
+    }[];
+  };
+}
+
+const { id, content } = defineProps<ShapeProps>();
+
+const round = {
+  "stroke-linejoin": "round",
+  "stroke-linecap": "round",
+} as const;
+
+const freezeEase = {
+  fill: "freeze",
+  calcMode: "spline",
+  keySplines: "0.5 0 0.5 1",
+} as const;
+</script>
+
+<template>
+  <svg
+    :id="`book__${id}`"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <path :id="`book__defs_${id}`" :d="content.d" />
+      <path
+        v-for="(segment, index) in content.segments"
+        :id="`book__defs_${id}_${index}`"
+        :d="segment.d"
+      />
+    </defs>
+    <g class="content">
+      <use
+        :href="`#book__defs_${id}`"
+        stroke-width="3"
+        :stroke="content.startShapeStroke"
+        fill="rgba(0, 0, 0, 0)"
+        :="round"
+      >
+        <animate
+          :begin="`book__${id}_ui.click`"
+          attributeName="stroke"
+          :values="`${content.startShapeStroke};${content.endShapeStroke}`"
+          dur="0.5s"
+          :="freezeEase"
+        />
+        <animate
+          :begin="`book__${id}_ui.click + 2s`"
+          attributeName="fill"
+          :values="`${content.startShapeFill};${content.endShapeFill}`"
+          dur="1s"
+          :="freezeEase"
+        />
+      </use>
+      <g>
+        <set
+          :begin="`book__${id}_ui.click`"
+          end="reset.click"
+          attributeName="display"
+          to="none"
+        />
+        <text
+          x="50"
+          y="50"
+          dx="1"
+          dy="7"
+          text-anchor="middle"
+          fill="white"
+          font-size="15"
+          v-if="content.clickText != null"
+        >
+          {{ content.clickText }}
+        </text>
+        <use
+          :id="`book__${id}_ui`"
+          class="pointer"
+          :href="`#book__defs_${id}`"
+          stroke-width="3"
+          stroke="transparent"
+          fill="transparent"
+          :="round"
+        ></use>
+      </g>
+      <g display="none">
+        <set
+          :begin="`book__${id}_ui.click`"
+          end="reset.click"
+          attributeName="display"
+          to="inline"
+        />
+        <template v-for="(segment, index) in content.segments">
+          <text dy="1">
+            <animate
+              :begin="`book__${id}_ui.click + 2s`"
+              attributeName="fill"
+              :values="`${content.startTextFill};${content.endTextFill}`"
+              dur="1s"
+              :="freezeEase"
+            />
+            <textPath
+              :href="`#book__defs_${id}_${index}`"
+              :startOffset="segment.startOffset"
+              :textLength="segment.textLength"
+              :font-size="segment.fontSize"
+            >
+              <animate
+                :begin="`book__${id}_ui.click + 1s`"
+                attributeName="startOffset"
+                :values="`${segment.startOffset};${segment.endOffset}`"
+                dur="2s"
+                :="freezeEase"
+              />
+              {{ segment.text }}
+            </textPath>
+          </text>
+        </template>
+      </g>
+    </g>
+    <g class="auxiliary">
+      <use
+        :href="`#book__defs_${id}`"
+        stroke="blue"
+        stroke-width="2"
+        fill="none"
+        opacity="0.4"
+        :="round"
+      />
+      <template v-for="(segment, index) in content.segments">
+        <use
+          :href="`#book__defs_${id}_${index}`"
+          :stroke="segment.auxiliary?.stroke"
+          stroke-width="1"
+          fill="none"
+          opacity="0.4"
+          :="round"
+        />
+      </template>
+    </g>
+  </svg>
+</template>
