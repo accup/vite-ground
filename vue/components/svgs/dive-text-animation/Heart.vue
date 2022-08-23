@@ -28,8 +28,9 @@ const shapeProps: ShapeProps = {
           L75 43
           C110 43 50 100 50 40
           C50 10 10 10 10 40
+          Q10 60 50 90
         `,
-        startOffset: 133,
+        startOffset: 149,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -46,7 +47,7 @@ const shapeProps: ShapeProps = {
           C90 0 10 0 10 40
           Q10 60 50 90
         `,
-        startOffset: 190,
+        startOffset: 191,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -57,15 +58,13 @@ const shapeProps: ShapeProps = {
         text: "なお、日本の建築などでみられる同様の形の",
         textLength: 56,
         d: `
-          M22 53
-          L78 53
-          C118 53 50 50 45 70
-          L40 90
-          L60 90
-          L55 70
-          C70 95 110 66 80 40
+          M25 53
+          L75 53
+          C120 53 50 140 50 40
+          C50 10 90 10 90 40
+          Q90 60 50 90
         `,
-        startOffset: 132,
+        startOffset: 189.5,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -76,14 +75,13 @@ const shapeProps: ShapeProps = {
         text: "文様や透かし彫りは猪目と呼ばれる。",
         textLength: 50,
         d: `
-          M25 58
-          L75 58
-          C95 58 90 50 85 45
-          C75 30 40 45 55 70
-          C70 95 110 66 80 40
-          Q65 27 50 10
+          M22 58
+          L78 58
+          Q94 58 98 40
+          C102 27 90 20 90 40
+          Q90 60 50 90
         `,
-        startOffset: 148,
+        startOffset: 131,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -96,11 +94,10 @@ const shapeProps: ShapeProps = {
         d: `
           M40 66
           L60 66
-          C90 66 95 53 80 40
-          Q65 27 50 10
-          Q35 27 20 40
+          C110 66 10 88 10 40
+          C10 10 50 10 50 40
         `,
-        startOffset: 90,
+        startOffset: 162,
         endOffset: 0,
         fontSize: 2,
         auxiliary: {
@@ -113,11 +110,11 @@ const shapeProps: ShapeProps = {
         d: `
           M33 70
           L67 70
-          C97 70 95 53 80 40
-          Q65 27 50 10
-          Q35 27 20 40
+          C80 70 80 60 65 55
+          Q50 50 50 40
+          C50 10 90 10 90 40
         `,
-        startOffset: 90,
+        startOffset: 83,
         endOffset: 0,
         fontSize: 2,
         auxiliary: {
