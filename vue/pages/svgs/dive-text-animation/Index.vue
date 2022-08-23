@@ -26,6 +26,14 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        begin="book__diamond_ui.click"
+        attributeName="transform"
+        type="translate"
+        values="135 -95;575 -415"
+        dur="0.7s"
+        :="freezeEase"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__spade_ui.click"
@@ -40,6 +48,22 @@ const freezeEase = {
           attributeName="transform"
           type="scale"
           values="1;5"
+          dur="0.7s"
+          :="freezeEase"
+        />
+        <animateTransform
+          begin="book__diamond_ui.click"
+          attributeName="transform"
+          type="scale"
+          values="5;25"
+          dur="0.7s"
+          :="freezeEase"
+        />
+        <animateTransform
+          begin="book__club_ui.click"
+          attributeName="transform"
+          type="scale"
+          values="25;125"
           dur="0.7s"
           :="freezeEase"
         />
@@ -68,12 +92,36 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        begin="book__diamond_ui.click"
+        attributeName="transform"
+        type="translate"
+        values="0 0;-100 100"
+        dur="0.7s"
+        :="freezeEase"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__heart_ui.click"
           attributeName="transform"
           type="scale"
           values="0.2;1"
+          dur="0.7s"
+          :="freezeEase"
+        />
+        <animateTransform
+          begin="book__diamond_ui.click"
+          attributeName="transform"
+          type="scale"
+          values="1;5"
+          dur="0.7s"
+          :="freezeEase"
+        />
+        <animateTransform
+          begin="book__club_ui.click"
+          attributeName="transform"
+          type="scale"
+          values="5;25"
           dur="0.7s"
           :="freezeEase"
         />
@@ -102,12 +150,28 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        begin="book__club_ui.click"
+        attributeName="transform"
+        type="translate"
+        values="0 0;0 0"
+        dur="0.7s"
+        :="freezeEase"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__diamond_ui.click"
           attributeName="transform"
           type="scale"
           values="0.2;1"
+          dur="0.7s"
+          :="freezeEase"
+        />
+        <animateTransform
+          begin="book__club_ui.click"
+          attributeName="transform"
+          type="scale"
+          values="1;5"
           dur="0.7s"
           :="freezeEase"
         />
