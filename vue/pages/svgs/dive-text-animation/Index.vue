@@ -411,12 +411,18 @@ const freezeEase = {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
-#app {
-  max-width: 768px;
-  margin: 0 auto;
+body {
+  margin: 0;
 }
 
 #book {
+  display: block;
+  position: fixed;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background-color: lightgray;
   font-family: "Noto Sans JP", sans-serif;
 }
@@ -427,6 +433,26 @@ const freezeEase = {
 
 label {
   user-select: none;
+}
+
+#auxiliary {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  margin: 4px;
+  height: 16px;
+}
+#auxiliary ~ label {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 20px;
+  top: 0;
+  height: 20px;
+  margin: 1px;
+  font-size: 16px;
 }
 
 #auxiliary:not(:checked) ~ #book .auxiliary {
