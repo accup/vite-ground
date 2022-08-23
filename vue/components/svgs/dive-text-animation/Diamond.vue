@@ -12,11 +12,11 @@ const shapeProps: ShapeProps = {
       L80 50
       Z
     `,
-    startShapeStroke: "rgba(240, 80, 0, 1)",
-    endShapeStroke: "rgba(240, 80, 0, 0)",
-    startShapeFill: "rgba(248, 148, 88, 0)",
-    endShapeFill: "rgba(248, 148, 88, 1)",
-    startTextFill: "rgba(240, 80, 0, 1)",
+    startShapeStroke: "rgba(255, 200, 120, 1)",
+    endShapeStroke: "rgba(255, 200, 120, 0)",
+    startShapeFill: "rgba(248, 180, 100, 0)",
+    endShapeFill: "rgba(248, 180, 100, 1)",
+    startTextFill: "rgba(255, 200, 120, 1)",
     endTextFill: "rgba(255, 255, 255, 1)",
     segments: [
       {

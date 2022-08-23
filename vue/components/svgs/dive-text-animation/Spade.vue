@@ -17,11 +17,11 @@ const shapeProps: ShapeProps = {
       Z
     `,
     clickText: "Click!",
-    startShapeStroke: "rgba(0, 0, 0, 1)",
-    endShapeStroke: "rgba(0, 0, 0, 0)",
-    startShapeFill: "rgba(108, 108, 108, 0)",
-    endShapeFill: "rgba(108, 108, 108, 1)",
-    startTextFill: "rgba(0, 0, 0, 1)",
+    startShapeStroke: "rgba(16, 16, 80, 1)",
+    endShapeStroke: "rgba(16, 16, 80, 0)",
+    startShapeFill: "rgba(108, 108, 160, 0)",
+    endShapeFill: "rgba(108, 108, 160, 1)",
+    startTextFill: "rgba(16, 16, 80, 1)",
     endTextFill: "rgba(255, 255, 255, 1)",
     segments: [
       {
