@@ -3,7 +3,7 @@ import type { ShapeProps } from "./Shape.vue";
 import Shape from "./Shape.vue";
 
 const shapeProps: ShapeProps = {
-  id: "heart",
+  id: "diamond",
   content: {
     d: `
       M50 40
@@ -58,8 +58,8 @@ const shapeProps: ShapeProps = {
         text: "なお、日本の建築などでみられる同様の形の",
         textLength: 56,
         d: `
-          M22 53
-          L78 53
+          M25 53
+          L75 53
           C120 53 50 140 50 40
           C50 10 90 10 90 40
           Q90 60 50 90
@@ -75,8 +75,8 @@ const shapeProps: ShapeProps = {
         text: "文様や透かし彫りは猪目と呼ばれる。",
         textLength: 50,
         d: `
-          M25 58
-          L75 58
+          M22 58
+          L78 58
           Q94 58 98 40
           C102 27 90 20 90 40
           Q90 60 50 90

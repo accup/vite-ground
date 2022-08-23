@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Spade from "../../../components/svgs/dive-text-animation/Spade.vue";
 import Heart from "../../../components/svgs/dive-text-animation/Heart.vue";
+import Diamond from "../../../components/svgs/dive-text-animation/Diamond.vue";
 
 const freeze = {
   fill: "freeze",
@@ -69,14 +70,6 @@ const freezeEase = {
       />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
-          begin="book__spade_ui.click"
-          attributeName="transform"
-          type="scale"
-          values="0.04;0.2"
-          dur="0.7s"
-          :="freezeEase"
-        />
-        <animateTransform
           begin="book__heart_ui.click"
           attributeName="transform"
           type="scale"
@@ -85,6 +78,40 @@ const freezeEase = {
           :="freezeEase"
         />
         <Heart width="100" height="100" />
+      </g>
+    </g>
+    <g transform="translate(20 -20)" opacity="0" display="none">
+      <set
+        begin="book__heart_ui.click + 2s"
+        attributeName="display"
+        to="inline"
+        :="freeze"
+      />
+      <animate
+        begin="book__heart_ui.click + 2s"
+        attributeName="opacity"
+        values="0;1"
+        dur="1s"
+        :="freezeEase"
+      />
+      <animateTransform
+        begin="book__diamond_ui.click"
+        attributeName="transform"
+        type="translate"
+        values="20 -20;0 0"
+        dur="0.7s"
+        :="freezeEase"
+      />
+      <g transform="scale(0.2)" transform-origin="50 50">
+        <animateTransform
+          begin="book__diamond_ui.click"
+          attributeName="transform"
+          type="scale"
+          values="0.2;1"
+          dur="0.7s"
+          :="freezeEase"
+        />
+        <Diamond width="100" height="100" />
       </g>
     </g>
   </svg>
