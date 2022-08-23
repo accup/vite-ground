@@ -2,6 +2,7 @@
 import Spade from "../../../components/svgs/dive-text-animation/Spade.vue";
 import Heart from "../../../components/svgs/dive-text-animation/Heart.vue";
 import Diamond from "../../../components/svgs/dive-text-animation/Diamond.vue";
+import Club from "../../../components/svgs/dive-text-animation/Club.vue";
 
 const freeze = {
   fill: "freeze",
@@ -31,6 +32,14 @@ const freezeEase = {
         attributeName="transform"
         type="translate"
         values="135 -95;575 -415"
+        dur="0.7s"
+        :="freezeEase"
+      />
+      <animateTransform
+        begin="book__club_ui.click"
+        attributeName="transform"
+        type="translate"
+        values="575 -415;2875 -2205"
         dur="0.7s"
         :="freezeEase"
       />
@@ -100,6 +109,14 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        begin="book__club_ui.click"
+        attributeName="transform"
+        type="translate"
+        values="-100 100;-500 370"
+        dur="0.7s"
+        :="freezeEase"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__heart_ui.click"
@@ -154,7 +171,7 @@ const freezeEase = {
         begin="book__club_ui.click"
         attributeName="transform"
         type="translate"
-        values="0 0;0 0"
+        values="0 0;0 -130"
         dur="0.7s"
         :="freezeEase"
       />
@@ -176,6 +193,40 @@ const freezeEase = {
           :="freezeEase"
         />
         <Diamond width="100" height="100" />
+      </g>
+    </g>
+    <g transform="translate(0 26)" opacity="0" display="inline">
+      <set
+        begin="book__diamond_ui.click + 2s"
+        attributeName="display"
+        to="inline"
+        :="freeze"
+      />
+      <animate
+        begin="book__diamond_ui.click + 2s"
+        attributeName="opacity"
+        values="0;1"
+        dur="1s"
+        :="freezeEase"
+      />
+      <animateTransform
+        begin="book__club_ui.click"
+        attributeName="transform"
+        type="translate"
+        values="0 26;0 0"
+        dur="0.7s"
+        :="freezeEase"
+      />
+      <g transform="scale(0.2)" transform-origin="50 50">
+        <animateTransform
+          begin="book__club_ui.click"
+          attributeName="transform"
+          type="scale"
+          values="0.2;1"
+          dur="0.7s"
+          :="freezeEase"
+        />
+        <Club width="100" height="100" />
       </g>
     </g>
   </svg>
