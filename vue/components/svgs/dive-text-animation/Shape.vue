@@ -24,7 +24,12 @@ export interface ShapeProps {
   };
 }
 
-const { id, content } = defineProps<ShapeProps>();
+const { resetDuration, shapeProps } = defineProps<{
+  resetDuration: string;
+  shapeProps: ShapeProps;
+}>();
+
+const { id, content } = shapeProps;
 
 const round = {
   "stroke-linejoin": "round",
@@ -74,11 +79,25 @@ const freezeEase = {
           dur="1s"
           :="freezeEase"
         />
+        <animate
+          begin="reset_animate_display.end"
+          attributeName="stroke"
+          :values="`${content.endShapeStroke};${content.startShapeStroke}`"
+          :dur="resetDuration"
+          :="freezeEase"
+        />
+        <animate
+          begin="reset_animate_display.end"
+          attributeName="fill"
+          :values="`${content.endShapeFill};${content.startShapeFill}`"
+          :dur="resetDuration"
+          :="freezeEase"
+        />
       </use>
       <g>
         <set
           :begin="`book__${id}_ui.click`"
-          end="reset.click"
+          :end="`book__${id}_animate_display.end`"
           attributeName="display"
           to="none"
         />
@@ -107,7 +126,7 @@ const freezeEase = {
       <g display="none">
         <set
           :begin="`book__${id}_ui.click`"
-          end="reset.click"
+          :end="`book__${id}_animate_display.end`"
           attributeName="display"
           to="inline"
         />
@@ -124,6 +143,13 @@ const freezeEase = {
               dur="1s"
               :="freezeEase"
             />
+            <animate
+              begin="reset_animate_display.end"
+              attributeName="fill"
+              :values="`${content.endTextFill};${content.startTextFill}`"
+              :dur="resetDuration"
+              :="freezeEase"
+            />
             <textPath
               :href="`#book__defs_${id}_${index}`"
               :startOffset="segment.startOffset"
@@ -135,6 +161,13 @@ const freezeEase = {
                 attributeName="startOffset"
                 :values="`${segment.startOffset};${segment.endOffset}`"
                 dur="2s"
+                :="freezeEase"
+              />
+              <animate
+                begin="reset_animate_display.end"
+                attributeName="startOffset"
+                :values="`${segment.endOffset};${segment.startOffset}`"
+                :dur="resetDuration"
                 :="freezeEase"
               />
               {{ segment.text }}

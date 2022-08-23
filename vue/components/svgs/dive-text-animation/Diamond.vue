@@ -2,6 +2,10 @@
 import type { ShapeProps } from "./Shape.vue";
 import Shape from "./Shape.vue";
 
+const props = defineProps<{
+  resetDuration: string;
+}>();
+
 const shapeProps: ShapeProps = {
   id: "diamond",
   content: {
@@ -155,5 +159,5 @@ const shapeProps: ShapeProps = {
 </script>
 
 <template>
-  <Shape :="shapeProps" />
+  <Shape :="props" :shape-props="shapeProps" />
 </template>

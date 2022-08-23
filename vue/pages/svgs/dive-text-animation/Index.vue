@@ -4,6 +4,8 @@ import Heart from "../../../components/svgs/dive-text-animation/Heart.vue";
 import Diamond from "../../../components/svgs/dive-text-animation/Diamond.vue";
 import Club from "../../../components/svgs/dive-text-animation/Club.vue";
 
+const resetDuration = "3s";
+
 const freeze = {
   fill: "freeze",
 } as const;
@@ -43,6 +45,15 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        id="book__spade_animate_display"
+        begin="reset_animate_display.end"
+        attributeName="transform"
+        type="translate"
+        values="2875 -2205;0 0"
+        :dur="resetDuration"
+        :="freezeEase"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__spade_ui.click"
@@ -76,15 +87,24 @@ const freezeEase = {
           dur="0.7s"
           :="freezeEase"
         />
-        <Spade width="100" height="100" />
+        <animateTransform
+          begin="reset_animate_display.end"
+          attributeName="transform"
+          type="scale"
+          values="125;0.2"
+          :dur="resetDuration"
+          :="freezeEase"
+        />
+        <Spade width="100" height="100" :reset-duration="resetDuration" />
       </g>
     </g>
     <g transform="translate(-27 19)" opacity="0" display="none">
       <set
+        id="book__heart_animate_display"
         begin="book__spade_ui.click + 2s"
+        :end="`reset_animate_display.end + ${resetDuration}`"
         attributeName="display"
         to="inline"
-        :="freeze"
       />
       <animate
         begin="book__spade_ui.click + 2s"
@@ -117,6 +137,27 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        begin="reset_animate_display.end"
+        attributeName="transform"
+        type="translate"
+        values="-500 370;-5.4 3.8"
+        :dur="resetDuration"
+        :="freezeEase"
+      />
+      <set
+        begin="book__heart_animate_display.end"
+        end="book__heart_animate_display.end"
+        attributeName="opacity"
+        to="0"
+        :="freeze"
+      />
+      <set
+        begin="book__heart_animate_display.end"
+        attributeName="transform"
+        to="translate(-27 19)"
+        :="freeze"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__heart_ui.click"
@@ -142,15 +183,30 @@ const freezeEase = {
           dur="0.7s"
           :="freezeEase"
         />
-        <Heart width="100" height="100" />
+        <animateTransform
+          begin="reset_animate_display.end"
+          attributeName="transform"
+          type="scale"
+          values="25;0.04"
+          :dur="resetDuration"
+          :="freezeEase"
+        />
+        <set
+          begin="book__heart_animate_display.end"
+          attributeName="transform"
+          to="scale(0.2)"
+          :="freeze"
+        />
+        <Heart width="100" height="100" :reset-duration="resetDuration" />
       </g>
     </g>
     <g transform="translate(20 -20)" opacity="0" display="none">
       <set
+        id="book__diamond_animate_display"
         begin="book__heart_ui.click + 2s"
+        :click="`reset_animate_display.end + ${resetDuration}`"
         attributeName="display"
         to="inline"
-        :="freeze"
       />
       <animate
         begin="book__heart_ui.click + 2s"
@@ -175,6 +231,26 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        begin="reset_animate_display.end"
+        attributeName="transform"
+        type="translate"
+        values="0 -130;-4.6 3"
+        :dur="resetDuration"
+        :="freezeEase"
+      />
+      <set
+        begin="book__diamond_animate_display.end"
+        attributeName="opacity"
+        to="0"
+        :="freeze"
+      />
+      <set
+        begin="book__diamond_animate_display.end"
+        attributeName="transform"
+        to="translate(20 -20)"
+        :="freeze"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__diamond_ui.click"
@@ -192,15 +268,30 @@ const freezeEase = {
           dur="0.7s"
           :="freezeEase"
         />
-        <Diamond width="100" height="100" />
+        <animateTransform
+          begin="reset_animate_display.end"
+          attributeName="transform"
+          type="scale"
+          values="5;0.008"
+          :dur="resetDuration"
+          :="freezeEase"
+        />
+        <set
+          begin="book__diamond_animate_display.end"
+          attributeName="transform"
+          to="scale(0.2)"
+          :="freeze"
+        />
+        <Diamond width="100" height="100" :reset-duration="resetDuration" />
       </g>
     </g>
-    <g transform="translate(0 26)" opacity="0" display="inline">
+    <g transform="translate(0 26)" opacity="0" display="none">
       <set
+        id="book__club_animate_display"
         begin="book__diamond_ui.click + 2s"
+        :end="`reset_animate_display + ${resetDuration}`"
         attributeName="display"
         to="inline"
-        :="freeze"
       />
       <animate
         begin="book__diamond_ui.click + 2s"
@@ -217,6 +308,26 @@ const freezeEase = {
         dur="0.7s"
         :="freezeEase"
       />
+      <animateTransform
+        begin="reset_animate_display.end"
+        attributeName="transform"
+        type="translate"
+        values="0 0;-4.6 3.208"
+        :dur="resetDuration"
+        :="freezeEase"
+      />
+      <set
+        begin="book__club_animate_display.end"
+        attributeName="opacity"
+        to="0"
+        :="freeze"
+      />
+      <set
+        begin="book__club_animate_display.end"
+        attributeName="transform"
+        to="translate(0 26)"
+        :="freeze"
+      />
       <g transform="scale(0.2)" transform-origin="50 50">
         <animateTransform
           begin="book__club_ui.click"
@@ -226,7 +337,72 @@ const freezeEase = {
           dur="0.7s"
           :="freezeEase"
         />
-        <Club width="100" height="100" />
+        <animateTransform
+          begin="reset_animate_display.end"
+          attributeName="transform"
+          type="scale"
+          values="1;0.0016"
+          :dur="resetDuration"
+          :="freezeEase"
+        />
+        <set
+          begin="book__club_animate_display.end"
+          attributeName="transform"
+          to="scale(0.2)"
+          :="freeze"
+        />
+        <Club width="100" height="100" :reset-duration="resetDuration" />
+      </g>
+    </g>
+    <g transform="translate(0 26)" opacity="0" display="none">
+      <set
+        id="reset_animate_display"
+        begin="book__club_ui.click + 2s"
+        end="reset.click + 0.5s"
+        attributeName="display"
+        to="inline"
+      />
+      <animate
+        begin="book__club_ui.click + 2s"
+        attributeName="opacity"
+        values="0;1"
+        dur="1s"
+        :="freezeEase"
+      />
+      <animate
+        begin="reset.click"
+        attributeName="opacity"
+        values="1;0"
+        dur="0.5s"
+        :="freezeEase"
+      />
+      <g transform="scale(0.2)" transform-origin="50 50">
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          stroke="black"
+          stroke-width="1"
+          fill="white"
+        />
+        <circle
+          id="reset"
+          class="pointer"
+          cx="50"
+          cy="50"
+          r="40"
+          stroke="transparent"
+          stroke-width="1"
+          fill="transparent"
+          display="none"
+        >
+          <set
+            begin="book__club_ui.click + 2s"
+            end="reset.click"
+            attributeName="display"
+            to="inline"
+          />
+        </circle>
       </g>
     </g>
   </svg>
