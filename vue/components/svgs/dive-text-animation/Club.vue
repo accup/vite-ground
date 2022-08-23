@@ -6,14 +6,12 @@ const shapeProps: ShapeProps = {
   id: "club",
   content: {
     d: `
-      M50 10
-      Q35 27 20 40
-      C-10 66 30 95 45 70
+      M55 65
+      C90 100 110 30 65 40
+      C80 0 20 0 35 40
+      C-10 30 10 100 45 65
       L40 90
       L60 90
-      L55 70
-      C70 95 110 66 80 40
-      Q65 27 50 10
       Z
     `,
     startShapeStroke: "rgba(0, 0, 0, 1)",
@@ -24,16 +22,15 @@ const shapeProps: ShapeProps = {
     endTextFill: "rgba(255, 255, 255, 1)",
     segments: [
       {
-        text: "スペード (spade) は、トランプなどで使用される",
-        textLength: 60,
+        text: "クラブ (club) あるいはクローバー (clover) は、トランプなどで",
+        textLength: 72,
         d: `
-          M20 43
-          L80 43
-          C110 43 70 -10 50 10
-          Q35 27 20 40
-          C-10 66 30 95 45 70
+          M14 46
+          L86 46
+          C110 46 20 30 55 65
+          C90 100 110 30 65 40
         `,
-        startOffset: 133,
+        startOffset: 154.5,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -41,18 +38,15 @@ const shapeProps: ShapeProps = {
         },
       },
       {
-        text: "スートのひとつである。カードゲームではスペードの",
-        textLength: 64,
+        text: "使用されるスートのひとつである。15世紀にフランスのルーアンと",
+        textLength: 74,
         d: `
-          M18 48
-          L82 48
-          C112 48 50 20 20 40
-          C-10 66 30 95 45 70
-          L40 90
-          L60 90
-          L55 70
+          M13 51
+          L87 51
+          C112 51 80 50 35 40
+          C-10 30 10 100 45 65
         `,
-        startOffset: 151,
+        startOffset: 144,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -60,18 +54,15 @@ const shapeProps: ShapeProps = {
         },
       },
       {
-        text: "カードが一番強いルールとしているものが多い。15世紀に",
-        textLength: 70,
+        text: "リヨンで使われ始めたといわれている。オリジナルはフランス柄の",
+        textLength: 76,
         d: `
-          M15 53
-          L85 53
-          C115 53 50 50 45 70
-          L40 90
-          L60 90
-          L55 70
-          C70 95 110 66 80 40
+          M12 56
+          L88 56
+          C120 56 35 120 65 40
+          C80 0 20 0 35 40
         `,
-        startOffset: 132,
+        startOffset: 169.5,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -79,17 +70,17 @@ const shapeProps: ShapeProps = {
         },
       },
       {
-        text: "フランスのルーアンとリヨンで使われ始めたといわれている。",
-        textLength: 74,
+        text: "“Trèfle” で英語では clover, 日本語では三つ葉を意味する。",
+        textLength: 68,
         d: `
-          M13.5 58
-          L87.5 58
-          C95 58 90 50 85 45
-          C75 30 40 45 55 70
-          C70 95 110 66 80 40
-          Q65 27 50 10
+          M16 61
+          L84 61
+          C120 61 50 40 45 65
+          L40 90
+          L60 90
+          L55 65
         `,
-        startOffset: 148,
+        startOffset: 137,
         endOffset: 0,
         fontSize: 2.5,
         auxiliary: {
@@ -97,16 +88,31 @@ const shapeProps: ShapeProps = {
         },
       },
       {
-        text: "出典: フリー百科事典『ウィキペディア（Wikipedia）』",
-        textLength: 53,
+        text: "出典: フリー百科事典",
+        textLength: 20,
         d: `
-          M33 65
-          L86 65
-          C100 65 95 53 80 40
-          Q65 27 50 10
-          Q35 27 20 40
+          M65 40
+          C110 30 90 100 55 65
+          C20 30 20 26 40 26
+          L60 26
         `,
-        startOffset: 90,
+        startOffset: 67,
+        endOffset: 147,
+        fontSize: 2,
+        auxiliary: {
+          stroke: "violet",
+        },
+      },
+      {
+        text: "『ウィキペディア（Wikipedia）』",
+        textLength: 30,
+        d: `
+          M35 30
+          L65 30
+          C80 30 80 30 45 65
+          C10 100 -10 30 35 40
+        `,
+        startOffset: 83,
         endOffset: 0,
         fontSize: 2,
         auxiliary: {
