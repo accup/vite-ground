@@ -15,13 +15,13 @@ const freezeEase = {
 <template>
   <input id="auxiliary" type="checkbox" />
   <label for="auxiliary">補助線を見る</label>
-  <svg id="book" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(10 0)">
+  <svg id="book" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(0 0)">
       <animateTransform
         begin="book__heart_ui.click"
         attributeName="transform"
         type="translate"
-        values="10 0;-20 -25"
+        values="0 0;135 -95"
         dur="0.7s"
         :="freezeEase"
       />
@@ -38,14 +38,14 @@ const freezeEase = {
           begin="book__heart_ui.click"
           attributeName="transform"
           type="scale"
-          values="1;0.6"
+          values="1;5"
           dur="0.7s"
           :="freezeEase"
         />
         <Spade width="100" height="100" />
       </g>
     </g>
-    <g transform="translate(-16 19)" opacity="0" display="none">
+    <g transform="translate(-27 19)" opacity="0" display="none">
       <set
         begin="book__spade_ui.click + 2s"
         attributeName="display"
@@ -63,7 +63,7 @@ const freezeEase = {
         begin="book__heart_ui.click"
         attributeName="transform"
         type="translate"
-        values="-16 19;10 0"
+        values="-27 19;0 0"
         dur="0.7s"
         :="freezeEase"
       />
@@ -92,6 +92,11 @@ const freezeEase = {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
+#app {
+  max-width: 768px;
+  margin: 0 auto;
+}
 
 #book {
   background-color: lightgray;
