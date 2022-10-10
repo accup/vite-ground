@@ -19,7 +19,12 @@ const freezeEase = {
 <template>
   <input id="auxiliary" type="checkbox" />
   <label for="auxiliary">補助線を見る</label>
-  <svg id="book" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    id="book"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="xMidYMid meet"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <g transform="translate(0 0)">
       <animateTransform
         begin="book__heart_ui.click"
@@ -377,7 +382,7 @@ const freezeEase = {
         :="freezeEase"
       />
       <g transform="scale(0.2)" transform-origin="50 50">
-        <circle
+        <!-- <circle
           cx="50"
           cy="50"
           r="40"
@@ -388,8 +393,8 @@ const freezeEase = {
         <circle
           id="reset"
           class="pointer"
-          cx="50"
-          cy="50"
+          cx="30"
+          cy="30"
           r="40"
           stroke="transparent"
           stroke-width="1"
@@ -402,7 +407,7 @@ const freezeEase = {
             attributeName="display"
             to="inline"
           />
-        </circle>
+        </circle> -->
       </g>
     </g>
   </svg>
@@ -421,8 +426,8 @@ body {
   z-index: 0;
   left: 0;
   top: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-color: lightgray;
   font-family: "Noto Sans JP", sans-serif;
 }
